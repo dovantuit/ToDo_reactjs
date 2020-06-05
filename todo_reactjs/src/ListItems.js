@@ -3,6 +3,7 @@ import './ListItems.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import FlipMove from 'react-flip-move';
 
 
 function ListItems(props) {
@@ -12,7 +13,16 @@ function ListItems(props) {
     const ListItems = items.map(item => {
         return (
             <div className="list" key={item.key}>
-                <p>{item.text}
+                <p>
+                    <input type="text"
+                    id={item.key}
+                    value={item.text}
+                    onChange = {
+                        (e)=>{
+                            props.setUpdate(e.target.value, item.key)
+                        }
+                    }
+                    />
                 <span>
                     <FontAwesomeIcon className="faicons"
                     icon={faTrash}
@@ -24,7 +34,11 @@ function ListItems(props) {
         )
     })
     return (
-        <div>{ListItems}</div>
+        <div>
+            <FlipMove duration={500} easing="ease-in-out">
+            {ListItems}
+            </FlipMove>
+        </div>
     )
 }
 

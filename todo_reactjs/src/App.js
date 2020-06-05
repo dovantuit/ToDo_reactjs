@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import ListItems from './ListItems';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import FlipMove from 'react-flip-move';
+// import {library} from '@fortawesome/fontawesome-svg-core';
+// import {faTrash} from '@fortawesome/free-solid-svg-icons';
 
 class App extends React.Component{
   constructor(props){
@@ -17,6 +18,7 @@ class App extends React.Component{
     this.handldeInput = this.handldeInput.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.setUpdate = this.setUpdate.bind(this);
   }
 
   handldeInput(e){
@@ -56,6 +58,19 @@ class App extends React.Component{
       })
   }
 
+  setUpdate(text, key){
+    const items = this.state.items;
+    items.map(item=>{
+      if(item.key === key){
+        item.text=text;
+      }
+    })
+    this.setState({
+      items: items
+    })
+
+  }
+
   render(){
     return (
       <div className="App">
@@ -68,6 +83,7 @@ class App extends React.Component{
         </form>
         <ListItems items={this.state.items}
         deleteItem = {this.deleteItem}
+        setUpdate= {this.setUpdate}
         ></ListItems>
 
       </header>
