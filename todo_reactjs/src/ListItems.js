@@ -1,7 +1,7 @@
 import React from 'react';
 import './ListItems.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import FlipMove from 'react-flip-move';
 
